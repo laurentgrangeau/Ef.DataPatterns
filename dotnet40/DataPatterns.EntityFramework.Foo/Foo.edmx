@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FOOModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FOOModelStoreContainer">
+          <EntitySet Name="DemandeImplementation" EntityType="FOOModel.Store.DemandeImplementation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Destination" EntityType="FOOModel.Store.Destination" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Documents" EntityType="FOOModel.Store.Documents" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RefCategorieDestination" EntityType="FOOModel.Store.RefCategorieDestination" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RefEtatRessource" EntityType="FOOModel.Store.RefEtatRessource" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RefPays" EntityType="FOOModel.Store.RefPays" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RefPlanNumerotation" EntityType="FOOModel.Store.RefPlanNumerotation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ressource" EntityType="FOOModel.Store.Ressource" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RessourceInt" EntityType="FOOModel.Store.RessourceInt" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RessourceNatDom" EntityType="FOOModel.Store.RessourceNatDom" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_DemandeImplementation_Ressource" Association="FOOModel.Store.FK_DemandeImplementation_Ressource">
+            <End Role="Ressource" EntitySet="Ressource" />
+            <End Role="DemandeImplementation" EntitySet="DemandeImplementation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destination_CategorieDestination" Association="FOOModel.Store.FK_Destination_CategorieDestination">
+            <End Role="RefCategorieDestination" EntitySet="RefCategorieDestination" />
+            <End Role="Destination" EntitySet="Destination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destination_Pays" Association="FOOModel.Store.FK_Destination_Pays">
+            <End Role="RefPays" EntitySet="RefPays" />
+            <End Role="Destination" EntitySet="Destination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ressource_PlanNum" Association="FOOModel.Store.FK_Ressource_PlanNum">
+            <End Role="RefPlanNumerotation" EntitySet="RefPlanNumerotation" />
+            <End Role="Ressource" EntitySet="Ressource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ressource_RefEtatRessource" Association="FOOModel.Store.FK_Ressource_RefEtatRessource">
+            <End Role="RefEtatRessource" EntitySet="RefEtatRessource" />
+            <End Role="Ressource" EntitySet="Ressource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RessourceInt_Destination" Association="FOOModel.Store.FK_RessourceInt_Destination">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="RessourceInt" EntitySet="RessourceInt" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DemandeImplementation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RessourceId" Type="int" Nullable="false" />
+          <Property Name="StId" Type="int" Nullable="false" />
+          <Property Name="RefEtatDemandeId" Type="int" Nullable="false" />
+          <Property Name="RefNatureDemandeId" Type="int" Nullable="false" />
+          <Property Name="RessourceTmp" Type="xml" />
+          <Property Name="DateCreation" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Libelle" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RefPaysId" Type="int" Nullable="false" />
+          <Property Name="RefCategorieDestinationId" Type="int" Nullable="false" />
+          <Property Name="RefStatutId" Type="int" Nullable="false" />
+          <Property Name="DateCreation" Type="datetime" Nullable="false" />
+          <Property Name="DateOuverture" Type="datetime" Nullable="false" />
+          <Property Name="DateFermeture" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NomFichier" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Commentaire" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="RefTypeDocumentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefCategorieDestination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Libelle" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateDebut" Type="datetime" Nullable="false" />
+          <Property Name="DateFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RefEtatRessource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Libelle" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateDebut" Type="datetime" Nullable="false" />
+          <Property Name="DateFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RefPays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Libelle" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateDebut" Type="datetime" Nullable="false" />
+          <Property Name="DateFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RefPlanNumerotation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Libelle" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateDebut" Type="datetime" Nullable="false" />
+          <Property Name="DateFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ressource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RefPlanNumerotationId" Type="int" Nullable="false" />
+          <Property Name="DateCreation" Type="datetime" Nullable="false" />
+          <Property Name="DateMaj" Type="datetime" Nullable="false" />
+          <Property Name="Numero" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="RefEtatRessourceId" Type="int" Nullable="false" />
+          <Property Name="RefModaliteId" Type="int" Nullable="false" />
+          <Property Name="DateEtat" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RessourceInt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DestinationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RessourceNatDom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RefZneId" Type="int" />
+          <Property Name="RoutageId" Type="int" />
+          <Property Name="ClasseId" Type="int" />
+          <Property Name="RefAllocationSpecId" Type="int" />
+          <Property Name="TypeRessourceId" Type="int" Nullable="false" />
+          <Property Name="RefSgtqsId" Type="int" />
+          <Property Name="DecisionArcep" Type="varchar" MaxLength="50" />
+          <Property Name="DateAttribution" Type="datetime" />
+          <Property Name="AttributaireId" Type="int" Nullable="false" />
+          <Property Name="MandataireId" Type="int" />
+        </EntityType>
+        <Association Name="FK_DemandeImplementation_Ressource">
+          <End Role="Ressource" Type="FOOModel.Store.Ressource" Multiplicity="1" />
+          <End Role="DemandeImplementation" Type="FOOModel.Store.DemandeImplementation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ressource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DemandeImplementation">
+              <PropertyRef Name="RessourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destination_CategorieDestination">
+          <End Role="RefCategorieDestination" Type="FOOModel.Store.RefCategorieDestination" Multiplicity="1" />
+          <End Role="Destination" Type="FOOModel.Store.Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefCategorieDestination">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="RefCategorieDestinationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destination_Pays">
+          <End Role="RefPays" Type="FOOModel.Store.RefPays" Multiplicity="1" />
+          <End Role="Destination" Type="FOOModel.Store.Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPays">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="RefPaysId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ressource_PlanNum">
+          <End Role="RefPlanNumerotation" Type="FOOModel.Store.RefPlanNumerotation" Multiplicity="1" />
+          <End Role="Ressource" Type="FOOModel.Store.Ressource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPlanNumerotation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ressource">
+              <PropertyRef Name="RefPlanNumerotationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ressource_RefEtatRessource">
+          <End Role="RefEtatRessource" Type="FOOModel.Store.RefEtatRessource" Multiplicity="1" />
+          <End Role="Ressource" Type="FOOModel.Store.Ressource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefEtatRessource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ressource">
+              <PropertyRef Name="RefEtatRessourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RessourceInt_Destination">
+          <End Role="Destination" Type="FOOModel.Store.Destination" Multiplicity="1" />
+          <End Role="RessourceInt" Type="FOOModel.Store.RessourceInt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RessourceInt">
+              <PropertyRef Name="DestinationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FOOModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FOOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Documents" EntityType="FOOModel.Documents" />
+          <EntitySet Name="Ressource" EntityType="FOOModel.Ressource" />
+          <EntitySet Name="RefPlanNumerotation" EntityType="FOOModel.RefPlanNumerotation" />
+          <AssociationSet Name="FK_Ressource_PlanNum" Association="FOOModel.FK_Ressource_PlanNum">
+            <End Role="RefPlanNumerotation" EntitySet="RefPlanNumerotation" />
+            <End Role="Ressource" EntitySet="Ressource" />
+          </AssociationSet>
+          <EntitySet Name="RefEtatRessource" EntityType="FOOModel.RefEtatRessource" />
+          <AssociationSet Name="FK_Ressource_RefEtatRessource" Association="FOOModel.FK_Ressource_RefEtatRessource">
+            <End Role="RefEtatRessource" EntitySet="RefEtatRessource" />
+            <End Role="Ressource" EntitySet="Ressource" />
+          </AssociationSet>
+          <EntitySet Name="DemandeImplementation" EntityType="FOOModel.DemandeImplementation" />
+          <EntitySet Name="Destination" EntityType="FOOModel.Destination" />
+          <AssociationSet Name="FK_DemandeImplementation_Ressource" Association="FOOModel.FK_DemandeImplementation_Ressource">
+            <End Role="Ressource" EntitySet="Ressource" />
+            <End Role="DemandeImplementation" EntitySet="DemandeImplementation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RessourceInt_Destination" Association="FOOModel.FK_RessourceInt_Destination">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="RessourceInt" EntitySet="Ressource" />
+          </AssociationSet>
+          <EntitySet Name="RefCategorieDestination" EntityType="FOOModel.RefCategorieDestination" />
+          <EntitySet Name="RefPays" EntityType="FOOModel.RefPays" />
+          <AssociationSet Name="FK_Destination_CategorieDestination" Association="FOOModel.FK_Destination_CategorieDestination">
+            <End Role="RefCategorieDestination" EntitySet="RefCategorieDestination" />
+            <End Role="Destination" EntitySet="Destination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destination_Pays" Association="FOOModel.FK_Destination_Pays">
+            <End Role="RefPays" EntitySet="RefPays" />
+            <End Role="Destination" EntitySet="Destination" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomFichier" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Commentaire" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="RefTypeDocumentId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ressource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefPlanNumerotationId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreation" Type="DateTime" Nullable="false" />
+          <Property Name="DateMaj" Type="DateTime" Nullable="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="RefEtatRessourceId" Type="Int32" Nullable="false" />
+          <Property Name="RefModaliteId" Type="Int32" Nullable="false" />
+          <Property Name="DateEtat" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="RefPlanNumerotation" Relationship="FOOModel.FK_Ressource_PlanNum" FromRole="Ressource" ToRole="RefPlanNumerotation" />
+          <NavigationProperty Name="RefEtatRessource" Relationship="FOOModel.FK_Ressource_RefEtatRessource" FromRole="Ressource" ToRole="RefEtatRessource" />
+          <NavigationProperty Name="DemandeImplementation" Relationship="FOOModel.FK_DemandeImplementation_Ressource" FromRole="Ressource" ToRole="DemandeImplementation" />
+        </EntityType>
+        <EntityType Name="RessourceInt" BaseType="FOOModel.Ressource">
+          <Property Name="DestinationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Destination" Relationship="FOOModel.FK_RessourceInt_Destination" FromRole="RessourceInt" ToRole="Destination" />
+        </EntityType>
+        <EntityType Name="RessourceNatDom" BaseType="FOOModel.Ressource">
+          <Property Name="RefZneId" Type="Int32" />
+          <Property Name="RoutageId" Type="Int32" />
+          <Property Name="ClasseId" Type="Int32" />
+          <Property Name="RefAllocationSpecId" Type="Int32" />
+          <Property Name="TypeRessourceId" Type="Int32" Nullable="false" />
+          <Property Name="RefSgtqsId" Type="Int32" />
+          <Property Name="DecisionArcep" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DateAttribution" Type="DateTime" />
+          <Property Name="AttributaireId" Type="Int32" Nullable="false" />
+          <Property Name="MandataireId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RefPlanNumerotation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Libelle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateDebut" Nullable="false" />
+          <Property Type="DateTime" Name="DateFin" />
+          <NavigationProperty Name="Ressource" Relationship="FOOModel.FK_Ressource_PlanNum" FromRole="RefPlanNumerotation" ToRole="Ressource" />
+        </EntityType>
+        <Association Name="FK_Ressource_PlanNum">
+          <End Type="FOOModel.RefPlanNumerotation" Role="RefPlanNumerotation" Multiplicity="1" />
+          <End Type="FOOModel.Ressource" Role="Ressource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPlanNumerotation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ressource">
+              <PropertyRef Name="RefPlanNumerotationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RefEtatRessource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Libelle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateDebut" Nullable="false" />
+          <Property Type="DateTime" Name="DateFin" />
+          <NavigationProperty Name="Ressource" Relationship="FOOModel.FK_Ressource_RefEtatRessource" FromRole="RefEtatRessource" ToRole="Ressource" />
+        </EntityType>
+        <Association Name="FK_Ressource_RefEtatRessource">
+          <End Type="FOOModel.RefEtatRessource" Role="RefEtatRessource" Multiplicity="1" />
+          <End Type="FOOModel.Ressource" Role="Ressource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefEtatRessource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ressource">
+              <PropertyRef Name="RefEtatRessourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DemandeImplementation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RessourceId" Nullable="false" />
+          <Property Type="Int32" Name="StId" Nullable="false" />
+          <Property Type="Int32" Name="RefEtatDemandeId" Nullable="false" />
+          <Property Type="Int32" Name="RefNatureDemandeId" Nullable="false" />
+          <Property Type="String" Name="RessourceTmp" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreation" Nullable="false" />
+          <NavigationProperty Name="Ressource" Relationship="FOOModel.FK_DemandeImplementation_Ressource" FromRole="DemandeImplementation" ToRole="Ressource" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Libelle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RefPaysId" Nullable="false" />
+          <Property Type="Int32" Name="RefCategorieDestinationId" Nullable="false" />
+          <Property Type="Int32" Name="RefStatutId" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreation" Nullable="false" />
+          <Property Type="DateTime" Name="DateOuverture" Nullable="false" />
+          <Property Type="DateTime" Name="DateFermeture" />
+          <NavigationProperty Name="RessourceInt" Relationship="FOOModel.FK_RessourceInt_Destination" FromRole="Destination" ToRole="RessourceInt" />
+          <NavigationProperty Name="RefCategorieDestination" Relationship="FOOModel.FK_Destination_CategorieDestination" FromRole="Destination" ToRole="RefCategorieDestination" />
+          <NavigationProperty Name="RefPays" Relationship="FOOModel.FK_Destination_Pays" FromRole="Destination" ToRole="RefPays" />
+        </EntityType>
+        <Association Name="FK_DemandeImplementation_Ressource">
+          <End Type="FOOModel.Ressource" Role="Ressource" Multiplicity="1" />
+          <End Type="FOOModel.DemandeImplementation" Role="DemandeImplementation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ressource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DemandeImplementation">
+              <PropertyRef Name="RessourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RessourceInt_Destination">
+          <End Type="FOOModel.Destination" Role="Destination" Multiplicity="1" />
+          <End Type="FOOModel.RessourceInt" Role="RessourceInt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RessourceInt">
+              <PropertyRef Name="DestinationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RefCategorieDestination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Libelle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateDebut" Nullable="false" />
+          <Property Type="DateTime" Name="DateFin" />
+          <NavigationProperty Name="Destination" Relationship="FOOModel.FK_Destination_CategorieDestination" FromRole="RefCategorieDestination" ToRole="Destination" />
+        </EntityType>
+        <EntityType Name="RefPays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Libelle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateDebut" Nullable="false" />
+          <Property Type="DateTime" Name="DateFin" />
+          <NavigationProperty Name="Destination" Relationship="FOOModel.FK_Destination_Pays" FromRole="RefPays" ToRole="Destination" />
+        </EntityType>
+        <Association Name="FK_Destination_CategorieDestination">
+          <End Type="FOOModel.RefCategorieDestination" Role="RefCategorieDestination" Multiplicity="1" />
+          <End Type="FOOModel.Destination" Role="Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefCategorieDestination">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="RefCategorieDestinationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destination_Pays">
+          <End Type="FOOModel.RefPays" Role="RefPays" Multiplicity="1" />
+          <End Type="FOOModel.Destination" Role="Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefPays">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="RefPaysId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FOOModelStoreContainer" CdmEntityContainer="FOOEntities">
+          <EntitySetMapping Name="Documents"><EntityTypeMapping TypeName="FOOModel.Documents"><MappingFragment StoreEntitySet="Documents">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="NomFichier" ColumnName="NomFichier" />
+            <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="RefTypeDocumentId" ColumnName="RefTypeDocumentId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ressource">
+            <EntityTypeMapping TypeName="IsTypeOf(FOOModel.Ressource)">
+              <MappingFragment StoreEntitySet="Ressource">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateEtat" ColumnName="DateEtat" />
+                <ScalarProperty Name="RefModaliteId" ColumnName="RefModaliteId" />
+                <ScalarProperty Name="RefEtatRessourceId" ColumnName="RefEtatRessourceId" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="DateMaj" ColumnName="DateMaj" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="RefPlanNumerotationId" ColumnName="RefPlanNumerotationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(FOOModel.RessourceInt)">
+              <MappingFragment StoreEntitySet="RessourceInt">
+                <ScalarProperty Name="DestinationId" ColumnName="DestinationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(FOOModel.RessourceNatDom)">
+              <MappingFragment StoreEntitySet="RessourceNatDom">
+                <ScalarProperty Name="MandataireId" ColumnName="MandataireId" />
+                <ScalarProperty Name="AttributaireId" ColumnName="AttributaireId" />
+                <ScalarProperty Name="DateAttribution" ColumnName="DateAttribution" />
+                <ScalarProperty Name="DecisionArcep" ColumnName="DecisionArcep" />
+                <ScalarProperty Name="RefSgtqsId" ColumnName="RefSgtqsId" />
+                <ScalarProperty Name="TypeRessourceId" ColumnName="TypeRessourceId" />
+                <ScalarProperty Name="RefAllocationSpecId" ColumnName="RefAllocationSpecId" />
+                <ScalarProperty Name="ClasseId" ColumnName="ClasseId" />
+                <ScalarProperty Name="RoutageId" ColumnName="RoutageId" />
+                <ScalarProperty Name="RefZneId" ColumnName="RefZneId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="RefPlanNumerotation">
+            <EntityTypeMapping TypeName="FOOModel.RefPlanNumerotation">
+              <MappingFragment StoreEntitySet="RefPlanNumerotation">
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefEtatRessource">
+            <EntityTypeMapping TypeName="FOOModel.RefEtatRessource">
+              <MappingFragment StoreEntitySet="RefEtatRessource">
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DemandeImplementation">
+            <EntityTypeMapping TypeName="FOOModel.DemandeImplementation">
+              <MappingFragment StoreEntitySet="DemandeImplementation">
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="RessourceTmp" ColumnName="RessourceTmp" />
+                <ScalarProperty Name="RefNatureDemandeId" ColumnName="RefNatureDemandeId" />
+                <ScalarProperty Name="RefEtatDemandeId" ColumnName="RefEtatDemandeId" />
+                <ScalarProperty Name="StId" ColumnName="StId" />
+                <ScalarProperty Name="RessourceId" ColumnName="RessourceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destination">
+            <EntityTypeMapping TypeName="FOOModel.Destination">
+              <MappingFragment StoreEntitySet="Destination">
+                <ScalarProperty Name="DateFermeture" ColumnName="DateFermeture" />
+                <ScalarProperty Name="DateOuverture" ColumnName="DateOuverture" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="RefStatutId" ColumnName="RefStatutId" />
+                <ScalarProperty Name="RefCategorieDestinationId" ColumnName="RefCategorieDestinationId" />
+                <ScalarProperty Name="RefPaysId" ColumnName="RefPaysId" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefCategorieDestination">
+            <EntityTypeMapping TypeName="FOOModel.RefCategorieDestination">
+              <MappingFragment StoreEntitySet="RefCategorieDestination">
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefPays">
+            <EntityTypeMapping TypeName="FOOModel.RefPays">
+              <MappingFragment StoreEntitySet="RefPays">
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Foo">
+        <EntityTypeShape EntityType="FOOModel.Documents" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOOModel.Ressource" Width="1.5" PointX="4.375" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOOModel.RessourceInt" Width="1.5" PointX="5.75" PointY="4.25" Height="1.2110807291666665" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOOModel.RessourceNatDom" Width="1.5" PointX="3.625" PointY="4.25" Height="2.9417936197916656" IsExpanded="true" />
+        <InheritanceConnector EntityType="FOOModel.RessourceInt">
+          <ConnectorPoint PointX="5.125" PointY="3.8840950520833331" />
+          <ConnectorPoint PointX="5.125" PointY="4.058" />
+          <ConnectorPoint PointX="5.354166666666667" PointY="4.0579999999999989" />
+          <ConnectorPoint PointX="5.520833333333333" PointY="4.058" />
+          <ConnectorPoint PointX="6.5" PointY="4.058" />
+          <ConnectorPoint PointX="6.5" PointY="4.25" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="FOOModel.RessourceNatDom">
+          <ConnectorPoint PointX="5.125" PointY="3.8840950520833331" />
+          <ConnectorPoint PointX="5.125" PointY="4.058" />
+          <ConnectorPoint PointX="4.375" PointY="4.058" />
+          <ConnectorPoint PointX="4.375" PointY="4.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="FOOModel.RefPlanNumerotation" Width="1.5" PointX="2.125" PointY="8" Height="2.1725878906249996" />
+        <AssociationConnector Association="FOOModel.FK_Ressource_PlanNum" >
+          <ConnectorPoint PointX="2.9375" PointY="8" />
+          <ConnectorPoint PointX="2.9375" PointY="3.3384407552083335" />
+          <ConnectorPoint PointX="4.375" PointY="3.3384407552083335" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FOOModel.RefEtatRessource" Width="1.5" PointX="2.125" PointY="11.125" Height="2.1725878906249996" />
+        <AssociationConnector Association="FOOModel.FK_Ressource_RefEtatRessource" >
+          <ConnectorPoint PointX="3.625" PointY="12.2112939453125" />
+          <ConnectorPoint PointX="5.4375" PointY="12.2112939453125" />
+          <ConnectorPoint PointX="5.4375" PointY="3.8840950520833331" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FOOModel.DemandeImplementation" Width="1.5" PointX="7" PointY="0.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="FOOModel.Destination" Width="1.5" PointX="0.75" PointY="4.625" Height="2.9417936197916674" />
+        <AssociationConnector Association="FOOModel.FK_DemandeImplementation_Ressource" >
+          <ConnectorPoint PointX="5.875" PointY="2.0285953776041659" />
+          <ConnectorPoint PointX="7" PointY="2.0285953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="FOOModel.FK_RessourceInt_Destination" >
+          <ConnectorPoint PointX="2.25" PointY="7.6028450520833326" />
+          <ConnectorPoint PointX="2.8541666666666665" PointY="7.6028450520833317" />
+          <ConnectorPoint PointX="3.0208333333333335" PointY="7.6028450520833326" />
+          <ConnectorPoint PointX="5.354166666666667" PointY="7.6028450520833317" />
+          <ConnectorPoint PointX="5.520833333333333" PointY="7.6028450520833326" />
+          <ConnectorPoint PointX="6.5" PointY="7.6028450520833326" />
+          <ConnectorPoint PointX="6.5" PointY="5.6533821614583335" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FOOModel.RefCategorieDestination" Width="1.5" PointX="0.75" PointY="14.75" Height="2.1725878906249978" />
+        <EntityTypeShape EntityType="FOOModel.RefPays" Width="1.5" PointX="0.75" PointY="17.625" Height="2.1725878906250031" />
+        <AssociationConnector Association="FOOModel.FK_Destination_CategorieDestination" >
+          <ConnectorPoint PointX="1.40625" PointY="14.75" />
+          <ConnectorPoint PointX="1.40625" PointY="7.951396484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="FOOModel.FK_Destination_Pays" >
+          <ConnectorPoint PointX="0.75115284615384614" PointY="17.625" />
+          <ConnectorPoint PointX="0.375" PointY="17.248847153846153" />
+          <ConnectorPoint PointX="0.375" PointY="8.326396484375" />
+          <ConnectorPoint PointX="0.75" PointY="7.951396484375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

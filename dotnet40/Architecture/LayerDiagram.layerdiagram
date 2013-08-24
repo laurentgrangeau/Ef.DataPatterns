@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="ca26b018-279f-40d3-a2b0-3c9d1281af5d" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="2467dadd-f9ab-4b12-ac49-0a707ae2dc25" name="ICrud&lt;T&gt;">
+      <references>
+        <reference Id="ab9d68a6-8127-4ef1-9a44-9850ca0b4753" name="ICrud&lt;T&gt;">
+          <ArtifactNode Label="ICrud&lt;T&gt;" Category="CodeSchema_Interface" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Interfaces/bin/Debug/DataPatterns.Interfaces.dll&quot; Namespace=DataPatterns.Interfaces Type=(Name=ICrud GenericParameterCount=1))" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Interfaces Namespace=DataPatterns.Interfaces Type=(Name=ICrud GenericParameterCount=1))" Label="ICrud&lt;T&gt;" Category="CodeSchema_Interface">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="6eb6d054-63f7-4830-be55-1dbdeff590f6" name="IObjectContext">
+      <references>
+        <reference Id="18700566-65ed-45ef-b1d9-63ba146fb26d" name="IObjectContext">
+          <ArtifactNode Label="IObjectContext" Category="CodeSchema_Interface" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Interfaces/bin/Debug/DataPatterns.Interfaces.dll&quot; Namespace=DataPatterns.Interfaces Type=IObjectContext)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Interfaces Namespace=DataPatterns.Interfaces Type=IObjectContext)" Label="IObjectContext" Category="CodeSchema_Interface">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="d472afed-3b25-4586-8568-ba3bf58587bb" name="IObjectSetFactory">
+      <references>
+        <reference Id="1351f2a6-97fc-4239-a734-fcea87fd6030" name="IObjectSetFactory">
+          <ArtifactNode Label="IObjectSetFactory" Category="CodeSchema_Interface" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Interfaces/bin/Debug/DataPatterns.Interfaces.dll&quot; Namespace=DataPatterns.Interfaces Type=IObjectSetFactory)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Interfaces Namespace=DataPatterns.Interfaces Type=IObjectSetFactory)" Label="IObjectSetFactory" Category="CodeSchema_Interface">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="6212eeac-529c-4a18-8bcb-a5d6a2a53667" name="IRepository&lt;T&gt;">
+      <references>
+        <reference Id="60489b85-bff8-4b48-9069-7a0de5347df6" name="IRepository&lt;T&gt;">
+          <ArtifactNode Label="IRepository&lt;T&gt;" Category="CodeSchema_Interface" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Interfaces/bin/Debug/DataPatterns.Interfaces.dll&quot; Namespace=DataPatterns.Interfaces Type=(Name=IRepository GenericParameterCount=1))" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Interfaces Namespace=DataPatterns.Interfaces Type=(Name=IRepository GenericParameterCount=1))" Label="IRepository&lt;T&gt;" Category="CodeSchema_Interface">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="0f5ee762-d550-4ba3-a94a-a5e1df81e8e8" name="IUnitOfWork">
+      <references>
+        <reference Id="2d059b98-1e6d-4844-8f35-6f3da338df79" name="IUnitOfWork">
+          <ArtifactNode Label="IUnitOfWork" Category="CodeSchema_Interface" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Interfaces/bin/Debug/DataPatterns.Interfaces.dll&quot; Namespace=DataPatterns.Interfaces Type=IUnitOfWork)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Interfaces Namespace=DataPatterns.Interfaces Type=IUnitOfWork)" Label="IUnitOfWork" Category="CodeSchema_Interface">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="138f1a90-afd0-49f7-b66d-98723f2f41e7" name="UnitOfWork">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="53f7e9ae-ee8c-4f6f-a915-34cfae1e2ba6" direction="Forward">
+          <layerMoniker Id="6eb6d054-63f7-4830-be55-1dbdeff590f6" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="3f9996d0-33a8-4cf7-a112-8f7a2ed79243" direction="Forward">
+          <layerMoniker Id="0f5ee762-d550-4ba3-a94a-a5e1df81e8e8" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="2e4aa51e-35e2-48d5-b8a6-f85de02e5e02" name="UnitOfWork">
+          <ArtifactNode Label="UnitOfWork" Category="CodeSchema_Class" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Socle/bin/Debug/DataPatterns.Socle.dll&quot; Namespace=DataPatterns.Socle Type=UnitOfWork)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Socle Namespace=DataPatterns.Socle Type=UnitOfWork)" Label="UnitOfWork" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="defa4b74-0f56-4b72-bf4b-7ee120a531bf" name="Repository&lt;T&gt;">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d3a2e1e4-39b2-4e3a-bb8f-1cffc9a77b47" direction="Forward">
+          <layerMoniker Id="d472afed-3b25-4586-8568-ba3bf58587bb" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="91b4ba7e-7e2e-48f3-9b8f-b815182e67f5" direction="Forward">
+          <layerMoniker Id="2467dadd-f9ab-4b12-ac49-0a707ae2dc25" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="e92c01b5-63a0-465b-a5be-71d8f248a8a0" direction="Forward">
+          <layerMoniker Id="6212eeac-529c-4a18-8bcb-a5d6a2a53667" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="7100644f-4015-44dd-9ae0-9772bd2a9779" name="Repository&lt;T&gt;">
+          <ArtifactNode Label="Repository&lt;T&gt;" Category="CodeSchema_Class" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Socle/bin/Debug/DataPatterns.Socle.dll&quot; Namespace=DataPatterns.Socle Type=(Name=Repository GenericParameterCount=1))" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Socle Namespace=DataPatterns.Socle Type=(Name=Repository GenericParameterCount=1))" Label="Repository&lt;T&gt;" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="d5b3e934-3bce-4e7e-8316-a1bb6d84a0bb" name="DbContextAdapter">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="8521e764-6537-4270-8046-28cae68b7684" direction="Forward">
+          <layerMoniker Id="fa8c5e2d-fd25-4223-9d33-79459ddb6053" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="1be5bae7-cb20-4e73-b6b7-a1c9408805bb" direction="Forward">
+          <layerMoniker Id="748af11e-ac0c-4288-a939-79169f6b88b0" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="e48597a1-5039-4268-963d-e809bfb53cb7" direction="Forward">
+          <layerMoniker Id="6eb6d054-63f7-4830-be55-1dbdeff590f6" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="b2d2abe9-fa22-4ddf-bd0b-b9bb138c0296" direction="Forward">
+          <layerMoniker Id="d472afed-3b25-4586-8568-ba3bf58587bb" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="623dd018-27dc-450e-9117-0830fb9ca29f" name="DbContextAdapter">
+          <ArtifactNode Label="DbContextAdapter" Category="CodeSchema_Class" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Socle/bin/Debug/DataPatterns.Socle.dll&quot; Namespace=DataPatterns.Socle.Adapters Type=DbContextAdapter)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Socle Namespace=DataPatterns.Socle.Adapters Type=DbContextAdapter)" Label="DbContextAdapter" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="748af11e-ac0c-4288-a939-79169f6b88b0" name="DbContextExtension">
+      <references>
+        <reference Id="da3e46a7-f5e9-4823-9f0e-11752a143178" name="DbContextExtension">
+          <ArtifactNode Label="DbContextExtension" Category="CodeSchema_Class" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Socle/bin/Debug/DataPatterns.Socle.dll&quot; Namespace=DataPatterns.Socle.Extensions Type=DbContextExtension)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Socle Namespace=DataPatterns.Socle.Extensions Type=DbContextExtension)" Label="DbContextExtension" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="fa8c5e2d-fd25-4223-9d33-79459ddb6053" name="ObjectContextAdapter">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="46886e87-6b2e-4756-a44c-7a131fd5d322" direction="Forward">
+          <layerMoniker Id="6eb6d054-63f7-4830-be55-1dbdeff590f6" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="928589c8-0285-4cca-b7d4-fd4d8a1fd083" direction="Forward">
+          <layerMoniker Id="d472afed-3b25-4586-8568-ba3bf58587bb" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="4f838a64-3a94-4a14-a265-85c0714d0611" name="ObjectContextAdapter">
+          <ArtifactNode Label="ObjectContextAdapter" Category="CodeSchema_Class" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Socle/bin/Debug/DataPatterns.Socle.dll&quot; Namespace=DataPatterns.Socle.Adapters Type=ObjectContextAdapter)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Socle Namespace=DataPatterns.Socle.Adapters Type=ObjectContextAdapter)" Label="ObjectContextAdapter" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="1d4f9626-3588-408c-8a3d-9786be487a55" name="PredicateBuilder">
+      <references>
+        <reference Id="85d984cb-dcb0-469a-945c-7122e712bd65" name="PredicateBuilder">
+          <ArtifactNode Label="PredicateBuilder" Category="CodeSchema_Class" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Socle/bin/Debug/DataPatterns.Socle.dll&quot; Namespace=DataPatterns.Socle.Builders Type=PredicateBuilder)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Socle Namespace=DataPatterns.Socle.Builders Type=PredicateBuilder)" Label="PredicateBuilder" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="aa3e22ca-d6e5-4797-8217-19f700c0b4ac" name="ContextAdapterFactory">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="58515cdb-7160-480e-9de1-f78f3224409c" direction="Forward">
+          <layerMoniker Id="d472afed-3b25-4586-8568-ba3bf58587bb" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="00593ffb-b680-4d55-a72e-c1c8361b6fac" direction="Forward">
+          <layerMoniker Id="d5b3e934-3bce-4e7e-8316-a1bb6d84a0bb" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="4fe6f9eb-137a-47cb-b1e9-41a9e682c856" direction="Forward">
+          <layerMoniker Id="fa8c5e2d-fd25-4223-9d33-79459ddb6053" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="31dcdfef-acbf-41ef-9813-88567fd424a5" name="ContextAdapterFactory">
+          <ArtifactNode Label="ContextAdapterFactory" Category="CodeSchema_Class" Id="(Assembly=&quot;$(PersonalUri)/Dev2010/CORA.Toolkit/Main/dotnet40/DataPatterns/DataPatterns.Socle/bin/Debug/DataPatterns.Socle.dll&quot; Namespace=DataPatterns.Socle.Factories Type=ContextAdapterFactory)" />
+          <ExpandedNode Id="(Assembly=DataPatterns.Socle Namespace=DataPatterns.Socle.Factories Type=ContextAdapterFactory)" Label="ContextAdapterFactory" Category="CodeSchema_Class">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>
