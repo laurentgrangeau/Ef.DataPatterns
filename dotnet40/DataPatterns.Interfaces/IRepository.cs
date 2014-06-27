@@ -7,7 +7,7 @@
 
     public interface IRepository<T>
     {
-        IEnumerable<T> ReadAll(params Expression<Func<T, object>>[] includeProperties);
+        IQueryable<T> ReadAll(params Expression<Func<T, object>>[] includeProperties);
         T Single(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
         T First(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
         T Last(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);

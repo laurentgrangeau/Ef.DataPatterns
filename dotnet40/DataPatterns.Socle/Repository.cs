@@ -26,7 +26,7 @@
             objectSet.AddObject(entity);
         }
 
-        public virtual IEnumerable<T> Read(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties)
+        public virtual IQueryable<T> Read(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties)
         {
             var query = AsQueryableWithIncludes(includeProperties);
 
@@ -53,11 +53,11 @@
             objectSet.DeleteObject(entity);
         }
 
-        public IEnumerable<T> ReadAll(params Expression<Func<T, object>>[] includeProperties)
+        public IQueryable<T> ReadAll(params Expression<Func<T, object>>[] includeProperties)
         {
             var query = AsQueryableWithIncludes(includeProperties);
 
-            return query.ToList();
+            return query;
         }
 
         public virtual T Single(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties)
@@ -83,7 +83,7 @@
 
         public IQueryable<T> AsQueryable()
         {
-            return objectSet.AsNoTracking();
+            return objectSet;
         }
 
         protected IQueryable<T> AsQueryableWithIncludes(IEnumerable<Expression<Func<T, object>>> includeProperties)
