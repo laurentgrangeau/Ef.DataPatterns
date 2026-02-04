@@ -14,8 +14,8 @@
     /// <typeparam name="T">The entity to perform repository and CRUD operations</typeparam>
     public class Repository<T> : ICrud<T>, IRepository<T> where T : IEntityWithKey
     {
-        private readonly ObjectContext objectContext;
-        private readonly IObjectSetFactory objectSetFactory;
+        private readonly ObjectContext _objectContext;
+        private readonly IObjectSetFactory _objectSetFactory;
 
         /// <summary>
         /// Default constructor
@@ -23,8 +23,8 @@
         /// <param name="objectSetFactory"></param>
         public Repository(IObjectSetFactory objectSetFactory)
         {
-            this.objectSetFactory = objectSetFactory;
-            this.objectContext = objectSetFactory.CreateObjectContext();
+            _objectSetFactory = objectSetFactory;
+            _objectContext = objectSetFactory.CreateObjectContext();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@
         /// <param name="entity"></param>
         public virtual void Create(T entity)
         {
-            this.objectContext.AddObject(typeof(T).Name, entity);
+            _objectContext.AddObject(typeof(T).Name, entity);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@
         /// <param name="entity"></param>
         public virtual void Update(T entity)
         {
-            this.objectContext.ApplyPropertyChanges(entity.EntityKey.EntitySetName, entity);
+            _objectContext.ApplyPropertyChanges(entity.EntityKey.EntitySetName, entity);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@
         /// <param name="entity"></param>
         public virtual void Delete(T entity)
         {
-            this.objectContext.DeleteObject(entity);
+            _objectContext.DeleteObject(entity);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@
         /// <returns></returns>
         public IQueryable<T> AsQueryable()
         {
-            return this.objectContext.CreateQuery<T>(string.Format("[{0}]", typeof(T).Name));
+            return _objectContext.CreateQuery<T>(string.Format("[{0}]", typeof(T).Name));
         }
 
         /// <summary>
