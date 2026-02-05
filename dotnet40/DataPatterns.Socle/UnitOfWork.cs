@@ -3,23 +3,36 @@
     using Interfaces;
     using System.Data.Objects;
 
+    /// <summary>
+    /// Implementation of Unit Of Work pattern
+    /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ObjectContext objectContext;
+        private readonly IObjectContext _objectContext;
 
-        public UnitOfWork(ObjectContext objectContext)
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="objectContext">An IObjectContext context</param>
+        public UnitOfWork(IObjectContext objectContext)
         {
-            this.objectContext = objectContext;
+            _objectContext = objectContext;
         }
 
+        /// <summary>
+        /// Save all changes to the current context
+        /// </summary>
         public void Commit()
         {
-            objectContext.SaveChanges();
+            _objectContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Dispose the current context
+        /// </summary>
         public void Dispose()
         {
-            objectContext.Dispose();
+            _objectContext.Dispose();
         }
     }
 }
