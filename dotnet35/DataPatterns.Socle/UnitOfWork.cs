@@ -7,7 +7,7 @@
     /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IObjectContext objectContext;
+        private readonly IObjectContext _objectContext;
 
         /// <summary>
         /// Default constructor
@@ -15,7 +15,7 @@
         /// <param name="objectContext">An IObjectContext context</param>
         public UnitOfWork(IObjectContext objectContext)
         {
-            this.objectContext = objectContext;
+            _objectContext = objectContext;
         }
 
         /// <summary>
@@ -23,7 +23,7 @@
         /// </summary>
         public void Commit()
         {
-            this.objectContext.SaveChanges();
+            _objectContext.SaveChanges();
         }
 
         /// <summary>
@@ -31,7 +31,7 @@
         /// </summary>
         public void Dispose()
         {
-            this.objectContext.Dispose();
+            _objectContext.Dispose();
         }
     }
 }
